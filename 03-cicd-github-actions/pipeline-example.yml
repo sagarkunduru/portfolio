@@ -1,0 +1,37 @@
+name: portfolio-validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 01-terraform-aws-platform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive
+      - run: terraform init -backend=false
+      - run: terraform validate
+
+  kubernetes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate YAML structure
+        run: |
+          python - <<'PY'
+          import pathlib
+          import yaml
+          for path in pathlib.Path("02-eks-production-platform/k8s").glob("*.yaml"):
+              with path.open() as f:
+                  assert yaml.safe_load(f), f"{path} is empty"
+              print(f"validated {path}")
+          PY
