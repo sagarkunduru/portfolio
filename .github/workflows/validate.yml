@@ -1,0 +1,45 @@
+name: Portfolio Validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 01-terraform-aws-platform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive
+      - run: terraform init -backend=false
+      - run: terraform validate
+
+  kubernetes:
+    name: Kubernetes manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-kubectl@v4
+      - name: Client-side validation
+        run: |
+          kubectl apply --dry-run=client -f 02-eks-production-platform/k8s/deployment.yaml
+          kubectl apply --dry-run=client -f 02-eks-production-platform/k8s/service.yaml
+          kubectl apply --dry-run=client -f 02-eks-production-platform/k8s/hpa.yaml
+
+  python:
+    name: Python syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile 07-python-automation/aws_inventory.py
