@@ -28,11 +28,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: azure/setup-kubectl@v4
-      - name: Client-side validation
+      - name: Client-side manifest checks
         run: |
-          kubectl apply --dry-run=client -f 02-eks-production-platform/k8s/deployment.yaml
-          kubectl apply --dry-run=client -f 02-eks-production-platform/k8s/service.yaml
-          kubectl apply --dry-run=client -f 02-eks-production-platform/k8s/hpa.yaml
+          # GitHub-hosted runners are not connected to a Kubernetes API server.
+          # --validate=false prevents kubectl from trying to download the
+          # cluster OpenAPI schema from localhost:8080 during a client dry-run.
+          kubectl apply --dry-run=client --validate=false -f 02-eks-production-platform/k8s/deployment.yaml
+          kubectl apply --dry-run=client --validate=false -f 02-eks-production-platform/k8s/service.yaml
+          kubectl apply --dry-run=client --validate=false -f 02-eks-production-platform/k8s/hpa.yaml
 
   python:
     name: Python syntax
