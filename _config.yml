@@ -1,0 +1,11 @@
+title: Sagar Kundur | DevOps & Cloud Engineer
+description: Production cloud engineering portfolio — AWS, Azure, Kubernetes, Terraform, CI/CD and platform reliability.
+exclude:
+  - 01-terraform-aws-platform
+  - 02-eks-production-platform
+  - 03-cicd-github-actions
+  - 04-kubernetes-deployment-strategies
+  - 05-observability-stack
+  - 06-cloud-security
+  - 07-python-automation
+  - azure
