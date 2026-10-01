@@ -27,15 +27,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: azure/setup-kubectl@v4
-      - name: Client-side manifest checks
+      - name: Install kubeconform
         run: |
-          # GitHub-hosted runners are not connected to a Kubernetes API server.
-          # --validate=false prevents kubectl from trying to download the
-          # cluster OpenAPI schema from localhost:8080 during a client dry-run.
-          kubectl apply --dry-run=client --validate=false -f 02-eks-production-platform/k8s/deployment.yaml
-          kubectl apply --dry-run=client --validate=false -f 02-eks-production-platform/k8s/service.yaml
-          kubectl apply --dry-run=client --validate=false -f 02-eks-production-platform/k8s/hpa.yaml
+          curl -fsSL https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz -o /tmp/kubeconform.tar.gz
+          tar -xzf /tmp/kubeconform.tar.gz -C /tmp kubeconform
+          sudo install /tmp/kubeconform /usr/local/bin/kubeconform
+      - name: Validate Kubernetes manifests offline
+        run: |
+          # kubeconform validates manifests against Kubernetes JSON schemas.
+          # It does not require a live cluster or kubeconfig.
+          kubeconform -strict -summary             02-eks-production-platform/k8s/deployment.yaml             02-eks-production-platform/k8s/service.yaml             02-eks-production-platform/k8s/hpa.yaml
 
   python:
     name: Python syntax
