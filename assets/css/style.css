@@ -68,3 +68,101 @@ footer{padding:34px 24px 48px;font-size:11px}
   .hero-card{max-width:100%}
   .hero-card pre{padding:20px;font-size:10.5px;line-height:1.8}
 }
+
+
+/* 2026-10-07 full portfolio visual polish */
+:root{
+  --max:1180px;
+  --section-space:92px;
+  --radius:14px;
+}
+body{font-size:16px;line-height:1.65}
+header{max-width:var(--max);height:78px;padding:0 28px}
+nav{gap:28px}
+nav a{font-size:13px;font-weight:500}
+.hero{
+  max-width:var(--max);
+  grid-template-columns:minmax(0,1.45fr) minmax(350px,.75fr);
+  gap:64px;
+  padding:92px 28px 76px;
+  align-items:center;
+}
+.hero-main{min-width:0}
+.available{font-size:10px;letter-spacing:.15em}
+.hero h1{
+  max-width:760px;
+  font-size:clamp(48px,5.1vw,70px);
+  line-height:1.06;
+  letter-spacing:-.045em;
+  margin:20px 0 24px;
+}
+.hero-main>p{max-width:680px;font-size:17px;line-height:1.72;margin:0}
+.hero-actions{margin:30px 0 40px}
+.primary,.secondary{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.proof{max-width:650px;padding-top:24px;gap:44px}
+.proof>div{min-width:105px}.proof b{font-size:15px}.proof span{font-size:11px}
+.hero-card{
+  width:100%;
+  max-width:410px;
+  justify-self:end;
+  transform:none!important;
+  border-radius:var(--radius);
+  border-color:#29445e;
+  box-shadow:0 28px 80px rgba(0,0,0,.42);
+}
+.cardtop{height:46px;padding:0 18px;font-size:9px}
+.hero-card pre{padding:24px 25px 25px;font-size:11.5px;line-height:1.9}
+.cardfoot{padding:13px 18px;font-size:9px}
+.statement{max-width:var(--max);padding:58px 28px}
+.statement p{max-width:1040px;font-size:clamp(26px,2.7vw,38px);line-height:1.4}
+.section{max-width:var(--max);padding:var(--section-space) 28px}
+.section-head{margin-bottom:40px;gap:56px}
+.section-head>div{min-width:0}
+.section-head>p{max-width:430px;font-size:14px;line-height:1.7}
+.section h2,.runbook-copy h2{font-size:clamp(35px,3.5vw,48px)}
+.projects{gap:16px}
+.project{border-radius:var(--radius);padding:30px;min-height:305px}
+.hero-project{min-height:350px;grid-template-columns:1.1fr .65fr}
+.project h3{font-size:25px}.project p{line-height:1.7}
+.skillrow{padding:23px 0}.skillrow b,.skillrow p{line-height:1.55}
+.timeline article{min-height:148px}
+.runbook-section{grid-template-columns:.9fr 1.1fr;gap:72px}
+.runbook-list a{padding:21px 7px}
+.certs{grid-template-columns:1.15fr 1fr 1fr;gap:16px}
+.cert{border-radius:var(--radius);min-height:96px}
+.cta{max-width:var(--max);margin:68px auto;padding:72px 28px;border-radius:18px}
+.cta h2{line-height:1.13}
+footer{max-width:var(--max);padding:36px 28px 52px}
+@media(max-width:1050px){
+  .hero{grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr);gap:42px}
+  .hero h1{font-size:clamp(46px,5.6vw,62px)}
+  .hero-card pre{font-size:10.8px}
+}
+@media(max-width:900px){
+  :root{--section-space:76px}
+  .hero{grid-template-columns:1fr;padding-top:68px}
+  .hero h1{max-width:760px}
+  .hero-card{justify-self:start;max-width:540px}
+  .section-head{align-items:flex-start}
+  .runbook-section{grid-template-columns:1fr;gap:44px}
+  .certs{grid-template-columns:1fr}
+}
+@media(max-width:800px){
+  header{padding:0 20px}
+  .hero{padding:58px 20px 58px}
+  .hero h1{font-size:clamp(40px,10vw,54px)}
+  .hero-main>p{font-size:16px}
+  .statement{padding:46px 20px}
+  .section{padding:68px 20px}
+  .section-head{gap:24px}
+  .project{padding:25px}
+  .cta{margin:30px 14px;padding:56px 20px}
+  footer{padding:34px 20px 46px}
+}
+@media(max-width:520px){
+  .hero h1{font-size:clamp(38px,11.5vw,48px)}
+  .hero-card pre{font-size:10.5px;line-height:1.82;padding:20px}
+  .statement p{font-size:25px}
+  .section h2,.runbook-copy h2{font-size:32px}
+  .proof{gap:20px 28px}
+}
