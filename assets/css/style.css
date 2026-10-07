@@ -166,3 +166,52 @@ footer{max-width:var(--max);padding:36px 28px 52px}
   .section h2,.runbook-copy h2{font-size:32px}
   .proof{gap:20px 28px}
 }
+
+
+/* 2026-10-07 complete portfolio visual polish */
+:root{--max:1180px}
+body{letter-spacing:-.005em}
+header{max-width:var(--max);height:78px}
+.hero{max-width:var(--max);grid-template-columns:minmax(0,1.42fr) minmax(350px,.72fr);gap:64px;padding-top:82px;padding-bottom:74px;align-items:center}
+.hero-main{min-width:0}
+.hero h1{max-width:760px;font-size:clamp(46px,5.1vw,66px);line-height:1.075;letter-spacing:-.045em;margin:18px 0 22px}
+.hero-main>p{max-width:640px;font-size:16.5px;line-height:1.72;color:#adbbcc}
+.available{font-size:10px;letter-spacing:.12em}
+.hero-actions{margin:28px 0 38px}
+.primary,.secondary{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.proof{max-width:650px;padding-top:22px;gap:0;justify-content:space-between}
+.proof>div{min-width:130px}.proof b{font-size:15px}.proof span{font-size:10.5px}
+.hero-card{max-width:410px;border-color:#2a4058;background:#081321}
+.cardtop{background:#0c1928}.hero-card pre{font-size:11.5px;line-height:1.9;color:#b4c2d2}.cardfoot{font-size:9px}
+.statement p{max-width:930px}
+.section-head>div{min-width:0}.section-head>p{max-width:420px}
+.project{border-radius:12px}.project h3{letter-spacing:-.02em}
+.hero-project{grid-template-columns:minmax(0,1fr) minmax(260px,.62fr)}
+.skillrow{min-height:72px}.skillrow b{font-weight:700}
+.career .section-head{margin-bottom:48px}
+.timeline article{grid-template-columns:140px 28px 1fr}
+.runbook-copy h2{margin-top:12px}.runbook-list a{min-height:72px}
+.cert{min-height:94px}
+.cta{max-width:calc(var(--max) - 48px)}
+footer{max-width:var(--max)}
+@media(max-width:1050px){
+  header nav{gap:20px}
+  .hero{grid-template-columns:minmax(0,1.2fr) minmax(330px,.75fr);gap:42px}
+  .hero h1{font-size:clamp(44px,5.5vw,58px)}
+  .hero-card{max-width:380px}
+}
+@media(max-width:900px){
+  header nav{display:none}
+  .hero{grid-template-columns:1fr;padding-top:64px}
+  .hero-main{max-width:760px}
+  .hero-card{justify-self:stretch;max-width:620px}
+  .proof{max-width:620px}
+  .section-head{display:block}.section-head>p{margin-top:16px}
+}
+@media(max-width:700px){
+  .hero h1{font-size:clamp(40px,11vw,50px)}
+  .proof{justify-content:flex-start;gap:22px 34px}
+  .projects{grid-template-columns:1fr}
+  .hero-project{grid-column:auto;grid-template-columns:1fr}
+  .visual{display:none}
+}
