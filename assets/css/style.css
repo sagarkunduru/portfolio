@@ -41,3 +41,30 @@ footer{padding:34px 24px 48px;font-size:11px}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:36px}.hero-card{max-width:620px}.runbook-section{grid-template-columns:1fr;gap:42px}.certs{grid-template-columns:1fr}.certs>div:first-child{margin-bottom:8px}}
 @media(max-width:800px){header{height:70px;padding:0 18px}.logo span{font-size:13px}.logo small{font-size:9px}.social-nav{gap:6px!important}.social-nav .linkedin,.social-nav .github{height:36px!important;padding:0 9px!important;font-size:10px!important}.hero{padding:58px 20px 58px}.hero h1{font-size:clamp(39px,11vw,52px);line-height:1.08}.hero-main>p{font-size:16px}.statement{padding:44px 20px}.section{padding:64px 20px}.section-head{margin-bottom:30px}.section h2,.runbook-copy h2{font-size:34px}.project{padding:24px;min-height:290px}.hero-project{min-height:310px}.skillrow{grid-template-columns:105px 1fr 20px;gap:8px}.skillrow p{font-size:14px}.timeline article{grid-template-columns:82px 18px 1fr;gap:12px}.cta{margin:28px 14px;padding:54px 20px}.cta .secondary{margin-left:0;margin-top:10px}footer{padding-left:20px;padding-right:20px;gap:20px}}
 @media(max-width:520px){.logo small{display:none}.social-nav .linkedin,.social-nav .github{padding:0 8px!important}.hero-actions{flex-direction:column;align-items:flex-start}.proof{gap:18px 26px}.hero-card pre{font-size:11px;padding:20px}.project h3{font-size:22px}.skillrow{grid-template-columns:1fr 24px}.skillrow b{grid-column:1}.skillrow p{grid-column:1}.skillrow i{grid-column:2;grid-row:1}.timeline article{grid-template-columns:1fr;gap:4px;min-height:auto;padding:0 0 34px}.timeline article>i{display:none}.timeline time{padding:0}.cert{align-items:flex-start}.cta h2 br{display:none}footer{align-items:flex-start;flex-direction:column}}
+
+
+/* 2026-10-07 hero platform card alignment fix */
+.hero-card{
+  transform:none;
+  width:100%;
+  max-width:430px;
+  justify-self:end;
+  border-radius:12px;
+  box-shadow:0 24px 70px rgba(0,0,0,.38);
+}
+.cardtop{height:46px;padding:0 18px}
+.hero-card pre{
+  padding:24px 26px 26px;
+  font-size:12px;
+  line-height:1.85;
+  tab-size:2;
+  overflow:visible;
+}
+.cardfoot{padding:13px 18px;line-height:1.5}
+@media(max-width:900px){
+  .hero-card{justify-self:start;max-width:560px}
+}
+@media(max-width:520px){
+  .hero-card{max-width:100%}
+  .hero-card pre{padding:20px;font-size:10.5px;line-height:1.8}
+}
